@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <div>
-      <div>CSV Parse and Filter Project</div>
+      <div className='m-4'>CSV Parse and Filter Project</div>
 
       <div className='m-4'>
         {/* form area */}
