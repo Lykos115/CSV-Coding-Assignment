@@ -5,7 +5,10 @@ const tableRows = (props) => {
     const arrFilter = props.arrFilter
 
     // creates the each block for the rows
-    const populatedRows = props.cells.map((item, i) => <td className='border border-black px-4 pt-4' key={i + 'cellData'}>{item}</td>)
+    const populatedRows = props.cells.map(
+        (item, i) => 
+            <td className='px-4 pt-4 border border-black' key={i + 'cellData'}>{item}</td>
+        )
 
     // itererates through arrFilter and only adds does to the filterArr
     for(const i in arrFilter){
