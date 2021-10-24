@@ -32,8 +32,8 @@ const resultsTable = (props) => {
     const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/
 
     // filter rows with only valid rows
-    const filteredEmails = splitRowData.filter(items => emailRegex.test(items[emailCheck]))
-    const filteredEmployed =  filteredEmails.filter(items => (items[employedCheck] === 'true' || items[employedCheck] === 'false'))
+    const filteredEmails = emailCheck < 0 ? splitRowData : splitRowData.filter(items => emailRegex.test(items[emailCheck]))
+    const filteredEmployed =  employedCheck < 0 ? filteredEmails : filteredEmails.filter(items => (items[employedCheck] === 'true' || items[employedCheck] === 'false'))
 
 
     // used to prevent list changing onChange for Select drop down
