@@ -35,10 +35,18 @@ export default function Home() {
         {/* form area */}
         <form onSubmit={handleSubmit}>
           <div>
-            <textarea className='border-solid border-black border w-9/12 h-96' name="csv-textarea" value={textfieldValue} onChange={handleCSVInput} />
+            <textarea 
+              className='w-9/12 border border-black border-solid h-96' 
+              name="csv-textarea" 
+              value={textfieldValue} 
+              onChange={handleCSVInput} />
           </div>
           <div>
-            <button className='bg-blue-500 disabled:opacity-50 text-white font-bold py-2 px-4 rounded' disabled={textfieldValue === ''}>Parse</button>
+            <button 
+              className='px-4 py-2 font-bold text-white bg-blue-500 rounded disabled:opacity-50' 
+              disabled={textfieldValue === ''}>
+                Parse
+              </button>
           </div>
         </form>
         {/* form area */}

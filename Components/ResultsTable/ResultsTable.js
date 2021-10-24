@@ -39,7 +39,12 @@ const resultsTable = (props) => {
     }
 
     // creates the rows for the table
-    const tableRows = filteredEmails.map((item, i) => <tr key={i + 'dataRow'}><TableRows key={i + 'dataRowCell'} cells={item} arrFilter={filterValue}/></tr>)
+    const tableRows = filteredEmails.map(
+        (item, i) => 
+            <tr key={i + 'dataRow'}>
+                <TableRows key={i + 'dataRowCell'} cells={item} arrFilter={filterValue}/>
+            </tr>
+        )
     
     return (
         <div>
@@ -55,7 +60,10 @@ const resultsTable = (props) => {
                 </div>
                 {/* button used for filtering */}
                 <div>
-                    <button className='px-4 py-2 font-bold text-white bg-blue-500 rounded disabled:opacity-50' disabled={(typeof filter === 'undefined' || !filter.length)} onClick={handleFilter}>
+                    <button 
+                        className='px-4 py-2 font-bold text-white bg-blue-500 rounded disabled:opacity-50' 
+                        disabled={(typeof filter === 'undefined' || !filter.length)} 
+                        onClick={handleFilter}>
                         Filter
                     </button>
                 </div>
