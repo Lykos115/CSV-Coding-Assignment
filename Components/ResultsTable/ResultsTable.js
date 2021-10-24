@@ -13,6 +13,7 @@ const resultsTable = (props) => {
 
     // array used for filtering and for table header label
     const filterArr = props.tableKeys[0].split(',')
+    const emailCheck = filterArr.indexOf('email')
 
     // used for Select component
     const options = {... filterArr}
@@ -30,7 +31,7 @@ const resultsTable = (props) => {
     const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/
 
     // filter rows with only valid rows
-    const filteredEmails = splitRowData.filter(items => emailRegex.test(items[3]))
+    const filteredEmails = splitRowData.filter(items => emailRegex.test(items[emailCheck]))
 
     // used to prevent list changing onChange for Select drop down
     const handleFilter = () => {
@@ -54,7 +55,7 @@ const resultsTable = (props) => {
                 </div>
                 {/* button used for filtering */}
                 <div>
-                    <button className='bg-blue-500 text-white font-bold py-2 px-4 rounded disabled:opacity-50' disabled={(typeof filter === 'undefined' || !filter.length)} onClick={handleFilter}>
+                    <button className='px-4 py-2 font-bold text-white bg-blue-500 rounded disabled:opacity-50' disabled={(typeof filter === 'undefined' || !filter.length)} onClick={handleFilter}>
                         Filter
                     </button>
                 </div>
