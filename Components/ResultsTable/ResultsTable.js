@@ -14,6 +14,7 @@ const resultsTable = (props) => {
     // array used for filtering and for table header label
     const filterArr = props.tableKeys[0].split(',')
     const emailCheck = filterArr.indexOf('email')
+    const employedCheck = filterArr.indexOf('employed')
 
     // used for Select component
     const options = {... filterArr}
@@ -32,6 +33,8 @@ const resultsTable = (props) => {
 
     // filter rows with only valid rows
     const filteredEmails = splitRowData.filter(items => emailRegex.test(items[emailCheck]))
+    const filteredEmployed =  filteredEmails.filter(items => (items[employedCheck] === 'true' || items[employedCheck] === 'false'))
+
 
     // used to prevent list changing onChange for Select drop down
     const handleFilter = () => {
@@ -39,7 +42,7 @@ const resultsTable = (props) => {
     }
 
     // creates the rows for the table
-    const tableRows = filteredEmails.map(
+    const tableRows = filteredEmployed.map(
         (item, i) => 
             <tr key={i + 'dataRow'}>
                 <TableRows key={i + 'dataRowCell'} cells={item} arrFilter={filterValue}/>
