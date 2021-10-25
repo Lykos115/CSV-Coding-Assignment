@@ -24,6 +24,8 @@ const resultsTable = (props) => {
 
     // returns an array of what the user want to filter by
     const filter = selectedOption?.map(items => Number(items['value']))
+    // reset filter for table
+    const resetFilter = filterArr.map((items, i) => i)
 
     // split row data
     const splitRowData = props.tableData.map((items, i) => items.split(','))
@@ -40,6 +42,10 @@ const resultsTable = (props) => {
     const handleFilter = () => {
         setFilterValue(filter)
     }
+    const handleReset = () => {
+        setFilterValue(resetFilter)
+        setSelectedOption(null)
+    }
 
     // creates the rows for the table
     const tableRows = filteredEmployed.map(
@@ -55,6 +61,7 @@ const resultsTable = (props) => {
                 <div>
                     <Select
                         defaultValue={selectedOption}
+                        value={selectedOption}
                         isMulti
                         options={listOptions}
                         onChange={setSelectedOption}
@@ -62,13 +69,24 @@ const resultsTable = (props) => {
                     />
                 </div>
                 {/* button used for filtering */}
-                <div>
-                    <button 
-                        className='px-4 py-2 font-bold text-white bg-blue-500 rounded disabled:opacity-50' 
-                        disabled={(typeof filter === 'undefined' || !filter.length)} 
-                        onClick={handleFilter}>
-                        Filter
-                    </button>
+                <div className='flex'>
+                    <div className='pr-4'>
+                        <button 
+                            className='px-4 py-2 font-bold text-white bg-blue-500 rounded disabled:opacity-50' 
+                            disabled={(typeof filter === 'undefined' || !filter.length)} 
+                            onClick={handleFilter}>
+                            Filter
+                        </button>
+                    </div>
+                    {/* button to reset filter */}
+                    <div>
+                        <button 
+                            className='px-4 py-2 font-bold text-white bg-blue-500 rounded disabled:opacity-50' 
+                            disabled={(typeof filter === 'undefined' || !filterValue?.length)}
+                            onClick={handleReset}>
+                            Reset
+                        </button>
+                    </div>
                 </div>
             </div>
             <table className='my-4'>
