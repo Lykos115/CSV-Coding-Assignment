@@ -65,6 +65,7 @@ const resultsTable = (props) => {
                         isMulti
                         options={listOptions}
                         onChange={setSelectedOption}
+                        placeholder='Fields'
                         className='mb-2'
                     />
                 </div>
